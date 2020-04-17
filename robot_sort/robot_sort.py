@@ -93,12 +93,69 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
-        """
-        Sort the robot's list.
-        """
-        # Fill this out
-        pass
+        '''
+        bubble sort due to the robots light being like swap = true
+        def bubble_sort(arr):
+            swap = True
+            while swap is True:
+                swap = False
+                for i in range(0, len(arr)-1):
+                    if arr[i] > arr[i + 1]:
+                        arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                        swap = True
+            return arr
+        print(bubble_sort(testArray))
+        '''
+        def swap_moveright():
+            self.swap_item()
+            self.move_right()
+        def swap_turnlight():
+            self.swap_item()
+            self.set_light_on()
 
+        self.set_light_on()
+        ''' while swap is true'''
+        while self.light_is_on():
+            '''swap = false'''
+            self.set_light_off()
+            '''if I can move once to the right'''
+            while self.can_move_right():
+                '''on first pass replace none with 1st item'''
+                '''on second pass replace none with 2nd item'''
+                swap_moveright()
+                # self.swap_item()
+                ''' then move to the right'''
+                # self.move_right()
+                ''' 1st compare item 0 to item 1'''
+                ''' 2nd compare item 1 to item 2'''
+                ''' third pass compare item 2 to item 3'''
+                ''' first pass compare_item isn't 1'''
+                ''' second pass compare_item isn't 1'''
+                ''' third pass compare_item is 1'''
+                if self.compare_item() == 1:
+                    ''' if item is bigger swap items'''
+                    swap_turnlight()
+                    # self.swap_item()
+                    ''' turn light back on because a swap occured'''
+                    # self.set_light_on()
+                '''first pass we just move back to the left and put the 15 back down'''
+                '''second pass we just move back to the left and put the 41 back down'''
+                '''move back to the left where you started'''
+                self.move_left()
+                '''first pass put the item from index 0 back and take none'''
+                '''second pass put the item from index 1 back and take none''' 
+                ''' robot now has none in his hand again'''
+                swap_moveright()
+                # self.swap_item()
+                ''' on first pass robot puts back down the 15 and picks up the None'''
+                '''move back in front of where the compared swap occured'''
+                # self.move_right()
+            while self.can_move_left():
+                self.move_left()
+
+
+'''HOW TO OPTIMIZE THIS ROBOT'''
+'''DO I NEED TO TWEAK THIS BUBBLE-esque SORT OR USE ANOTHER SORTING METHOD'''
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
