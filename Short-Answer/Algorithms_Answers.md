@@ -20,6 +20,14 @@ for f in 1:n
   if egg_breaks(f):
     return f
 
+O(log(n))
+  we start in the middle of the floors (range of n) and drop an egg and if the egg breaks, we go down a floor, skipping all the floors below the egg breaking and all the floors above the egg breaking.
+
+  for f in range(0, len(n)//2):
+    if egg_breaks(f):
+      return f
+  
+
         o
    O /    o
 -- |       o
